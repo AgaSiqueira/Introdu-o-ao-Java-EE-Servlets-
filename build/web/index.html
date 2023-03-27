@@ -13,5 +13,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <h1>JavaEE</h1> 
         <h2>Intro</h2>
         <h3><a href='greeting'>Greeting</a></h3>
+        
+        <h3>Calc</h3>
+        <!-- Action é o caminho que vai esse form -->
+        <form action="sum.html">
+            <!-- Os nomes dos imputs são as variaveis que são puxadas no
+            url para o SunServlet tipo em laravel-->
+            <input type="number" name="n1"/>
+                <select name="operation">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="*">*</option>
+                    <option value="/">/</option>
+                </select>
+            <input type="number" name="n2"/>
+            <input type="submit" name="sum" value="="/>
+        </form>
+        
+        <h3>Randomize Numbers</h3>
+        <form action="random.html">
+            <!-- Os nomes dos imputs são as variaveis que são puxadas no
+            url para o SunServlet tipo em laravel-->
+            <input type="number" name="n" value="10"/>               
+            <input type="submit" name="random" value="Generate"/>
+        </form>
     </body>
 </html>
