@@ -16,8 +16,8 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author agath
  */
-@WebServlet(name = "RandomServlet", urlPatterns = {"/random.html"})
-public class RandomServlet extends HttpServlet {
+@WebServlet(name = "MultiplicationTableServlet", urlPatterns = {"/mult_table.html"})
+public class MultiplicationTableServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,52 +31,45 @@ public class RandomServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        /*Definição de leitura das entradas*/
-        int n=10;
+        int n=2;
         String errorMessage=null;
         try{
              n = Integer.parseInt(request.getParameter("n"));
         }catch(Exception ex){
              errorMessage = "Invalid Parameter";       
         }
-        /*Processo da saída*/
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet HelloServlet</title>");            
+            out.println("<title>Java EE Mult</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h4><a href='index.html'>Voltar</a></h4>");
             out.println("<h1>Java EE</h1>");
             out.println("<h2>Intro</h2>");
-            out.println("<h3>Ramdomize Numbers</h3>");
+            out.println("<h3>Multiplicate Table</h3>");
             out.println("<form>");
                 out.println("<input type='number' name='n' value='"+n+"'> ");
                 out.println("<input type='submit' name='random' value='Generate'> ");
             out.println("</form>");  
             out.println("<hr/>");
-                    if(errorMessage!=null){
-                        out.println("<h4 style='color:red'>Deu ruim!</h4>");
-                    }else{        
-                        out.println("<table border='1'>");
-                            out.println("<tr>");
-                                out.println("<th>Index</th> <th>Number</th>");
-                            out.println("</tr>");
-                            for(int i=1;i<=n;i++){
-                                out.println("<tr>");
-                                    out.println("<th>"+i+"</th>");
-                                    /*com 100 a frente de ramdom retorna 
-                                    um numero de 1 a 100*/
-                                    int r=((int)(100*Math.random()));
-                                    out.println("<th>"+r+"</th>");
-                                out.println("</tr>");
-                            }
-                        out.println("</table>");
-                    }
-                
-                
+            if(errorMessage!=null){
+                out.println("<h4 style='color:red'>Deu ruim!</h4>");
+            }else{
+                out.println("<table border='0'>");
+                for(int i=1; i <= 10; i++){
+                    out.println("<tr>");
+                        out.println("<td>"+n+"</td>");
+                        out.println("<td>x</td>");
+                        out.println("<td>"+i+"</td>");
+                        out.println("<td>=</td>");
+                        out.println("<td>"+(n*i)+"</td>");
+                    out.println("</tr>");
+                }
+            }
+            
             out.println("</body>");
             out.println("</html>");
         }
